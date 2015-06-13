@@ -10,7 +10,10 @@ class PlacesController < ApplicationController
   end
 
   def show
-    respond_with(@place)
+    @reviews = @place.reviews
+    if current_user
+      @review = Review.new
+    end
   end
 
   def new
